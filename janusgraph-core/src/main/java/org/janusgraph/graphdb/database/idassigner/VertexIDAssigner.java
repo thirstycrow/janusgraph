@@ -216,9 +216,7 @@ public class VertexIDAssigner implements AutoCloseable {
                                 //...and if such does not exists (i.e. both end vertices are partitioned) we use the hash of the relation id
                                 newPartition = idManager.getPartitionHashForId(relation.longId());
                             }
-                            if (idManager.getPartitionId(incident.longId())!=newPartition) {
-                                ((ReassignableRelation)relation).setVertexAt(pos,incident.tx().getOtherPartitionVertex(incident, newPartition));
-                            }
+                            ((ReassignableRelation)relation).setVertexAt(pos,incident.tx().getOtherPartitionVertex(incident, newPartition));
                         }
                     }
                 }
